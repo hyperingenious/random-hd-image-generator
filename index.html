@@ -1,0 +1,75 @@
+<html>
+<style>
+	*{
+	margin:0;padding:0;
+height: 100vh;
+	}
+
+	body{
+		display:flex;
+		justify-content: center;
+		align-items:center;
+		background: black;
+	}
+	.triangle {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 100px 100px 0 0; /* This creates a right-angle triangle */
+            border-color: skyblue transparent transparent transparent;
+        }
+
+	.box{
+		display:flex;
+		flex-wrap: wrap;
+		width: 4000px;
+		height: 4000px;
+	}
+</style>
+	<body>
+<div class='triangle'></div>
+
+		<div class='box'>
+
+		</div>		
+	</body>
+	<script>
+
+
+		const box = document.querySelector('.box');
+		let value = 100;
+		const ran1=(()=> `rgba(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`)()
+		const ran2=(()=> `rgba(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`)()
+
+		function genRandomColorRgba(){
+			return `${[ran1, ran2][Math.floor(Math.random()*2)]}`
+			/*
+			const color
+			const first = Math.random() * 255;
+			const second = Math.random() * 255;
+			const third= Math.random() * 255;
+
+			return `rgba(${first}, ${second}, ${third})`
+				*/
+		}
+
+		const squares = []
+
+		for(let i =0;i<value; ++i){
+			const el  = document.createElement('div');
+			el.style.background = genRandomColorRgba();
+			el.style.width = '40px'
+			el.style.height= '40px'
+			box.appendChild(el);
+
+			for(let j =0; j<i+1; ++j){
+			const el  = document.createElement('div');
+			el.style.background = genRandomColorRgba();
+			el.style.width = '40px'
+			el.style.height= '40px'
+			box.appendChild(el);
+			}
+		}
+
+	</script>
+</html>
