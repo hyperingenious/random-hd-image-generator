@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generating Triangles</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+</head>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		height: 100vh;
+		display:flex;
+		width: 100%;
+		justify-content: center;
+		align-items:center;
+	}
+		.box{
+			width: 800px;
+			height: 800px;
+		display:flex;
+		flex-wrap: wrap;
+			/*
+			border-top: 20px solid red;
+			border-bottom: 20px solid blue;
+			border-right: 20px solid green;
+			border-left: 20px solid yellow;
+			width:0;height:0;
+			*/
+		}
+	</style>
+<body>
+		<div class='box'></div>
+</body>
+	<script>
+	const box = document.querySelector('.box');
+	const ranColorGen= ()=> `rgba(${Math.random()*255},${Math.random()*255},${Math.random()*255})`
+	const fourRandom = ()=> Array.from({length: 4}, ()=>ranColorGen()); 
+
+
+	const totalSq = 20;
+	for( let i = 0; i<totalSq; ++i){
+		const colors = fourRandom();
+		const el = document.createElement('div');
+		el.style.borderRight = `20px solid ${colors[0]}`
+		el.style.borderLeft= `20px solid ${colors[1]}`
+		el.style.borderTop = `20px solid ${colors[2]}`
+		el.style.borderBottom = `20px solid ${colors[3]}`
+		el.style.width= '0';
+		el.style.height = '0';
+		box.appendChild(el);
+
+		for (let j = 0; j<totalSq-1; ++j){
+		const colors = fourRandom();
+		const el = document.createElement('div');
+		el.style.borderRight = `20px solid ${colors[0]}`
+		el.style.borderLeft= `20px solid ${colors[1]}`
+		el.style.borderTop = `20px solid ${colors[2]}`
+		el.style.borderBottom = `20px solid ${colors[3]}`
+		el.style.width= '0';
+		el.style.height = '0';
+		box.appendChild(el);
+		}
+	}
+
+	</script>
+</html>
